@@ -92,8 +92,17 @@ public class WheelDrive : MonoBehaviour
 
 				// Assume that the only child of the wheelcollider is the wheel shape.
 				Transform shapeTransform = wheel.transform.GetChild (0);
-				shapeTransform.position = p;
-				shapeTransform.rotation = q;
+
+                if (wheel.name == "a0l" || wheel.name == "a1l" || wheel.name == "a2l")
+                {
+                    shapeTransform.rotation = q * Quaternion.Euler(0, 180, 0);
+                    shapeTransform.position = p;
+                }
+                else
+                {
+                    shapeTransform.position = p;
+                    shapeTransform.rotation = q;
+                }
 			}
 		}
 	}
